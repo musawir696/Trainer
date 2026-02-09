@@ -1,0 +1,12 @@
+/**
+ * Component Structure:
+ * - Header (Navigation)
+ * - Hero (Profile, Name, CTA)
+ * - About (Profession, Bio)
+ * - Books (Card display)
+ * - Schedule (Table/List)
+ * - Workshops (List)
+ * - Testimonials (Carousel/Grid)
+ * - Contact (Form)
+ * - Footer (Socials)
+ */
