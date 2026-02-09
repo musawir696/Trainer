@@ -26,16 +26,16 @@ const Header = () => {
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm py-4"
+          ? "glass"
           : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a
           href="#"
-          className="text-2xl font-bold text-gray-900 tracking-tighter"
+          className="text-3xl font-bold tracking-tighter"
         >
-          Ghayas<span className="text-blue-600">.</span>
+          <span className="text-gray-900">Ghayas</span><span className="text-blue-600">.</span>
         </a>
 
         {/* Desktop Navigation */}
@@ -44,16 +44,17 @@ const Header = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm uppercase tracking-wide"
+              className="relative text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm uppercase tracking-wider group"
             >
               {link.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
             </a>
           ))}
         </nav>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-900 focus:outline-none"
+          className="md:hidden text-gray-900 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <svg
@@ -82,12 +83,12 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden p-4 flex flex-col space-y-4">
+          <div className="absolute top-full left-0 w-full glass md:hidden p-6 flex flex-col space-y-4 animate-fade-in-up">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-blue-600 font-medium transition-colors block text-center"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors block text-center py-2 border-b border-gray-100 last:border-0"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}

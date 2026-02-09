@@ -23,28 +23,34 @@ const Workshops = () => {
   ];
 
   return (
-    <section id="workshops" className="py-20 bg-gray-900 text-white">
-      <div className="container mx-auto px-6">
+    <section id="workshops" className="py-24 bg-gray-900 text-white relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl opacity-20 pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-[100px]"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-screen filter blur-[100px]"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <span className="text-blue-400 font-semibold tracking-wide uppercase">Training Programs</span>
-          <h2 className="text-3xl lg:text-4xl font-bold mt-2">Signature Workshops</h2>
+          <span className="text-blue-400 font-bold tracking-wider uppercase text-sm">Training Programs</span>
+          <h2 className="text-4xl lg:text-5xl font-bold mt-2">Signature Workshops</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {workshops.map((workshop, index) => (
-            <div key={index} className="bg-gray-800 rounded-2xl p-8 hover:bg-gray-750 transition-colors border border-gray-700 hover:border-gray-600">
-              <div className={`w-16 h-16 ${workshop.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg transform -rotate-3`}>
+            <div key={index} className="group bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 hover:bg-gray-800 transition-all border border-gray-700 hover:border-gray-600 hover:shadow-2xl hover:shadow-blue-900/20 card-hover flex flex-col">
+              <div className={`w-16 h-16 ${workshop.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-${workshop.color.split('-')[1]}-500/30 transform group-hover:rotate-6 transition-transform duration-300`}>
                 {workshop.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-3">{workshop.title}</h3>
-              <div className="inline-block px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300 mb-4">
+              <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">{workshop.title}</h3>
+              <div className="inline-block self-start px-4 py-1.5 bg-gray-700/50 rounded-full text-xs font-semibold text-gray-300 mb-6 uppercase tracking-wide border border-gray-600">
                 {workshop.duration}
               </div>
-              <p className="text-gray-400 leading-relaxed mb-6">
+              <p className="text-gray-400 leading-relaxed mb-8 flex-grow">
                 {workshop.description}
               </p>
-              <button className="text-white font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                Request Modules <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              <button className="w-full py-4 rounded-xl bg-white/10 hover:bg-white text-white hover:text-gray-900 font-bold transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg backdrop-blur-sm">
+                Request Modules <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </button>
             </div>
           ))}
